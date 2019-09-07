@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///改版主题
+///自定义主题
 class ChangeTheme extends StatefulWidget {
   var brightness;
 
@@ -11,7 +11,7 @@ class ChangeTheme extends StatefulWidget {
 }
 
 class _ChangeThemeState extends State<ChangeTheme> {
-  String title = '改变Theme';
+  String title = '自定义主题';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
