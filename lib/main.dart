@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/change_fonts.dart';
 import 'package:flutter_learn/change_theme.dart';
 import 'package:flutter_learn/less_group_page.dart';
 import 'package:flutter_learn/stateful_group_page.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
               brightness: brightness,
             ),
         'change_theme' : (BuildContext context) => ChangeTheme(brightness: brightness,),
+        'change_fonts' : (BuildContext context) => ChangeFonts(brightness: brightness,),
       },
     );
   }
@@ -80,8 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 'less'),
             _items('StatefulWidget基础组件',
                 StatefulGroupPage(brightness: brightness), 'ful'),
-            _items('改版主题',
+            _items('自定义主题',
                 ChangeTheme(brightness: brightness,), 'change_theme'),
+             _items('自定义字体',
+                ChangeFonts(brightness: brightness,), 'change_fonts'),
+
           ],
         ),
       ),
