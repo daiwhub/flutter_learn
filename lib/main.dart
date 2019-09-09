@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learn/change_fonts.dart';
 import 'package:flutter_learn/change_theme.dart';
 import 'package:flutter_learn/less_group_page.dart';
+import 'package:flutter_learn/photo_app_page.dart';
 import 'package:flutter_learn/stateful_group_page.dart';
 
 void main() => runApp(MyApp());
@@ -20,8 +21,15 @@ class MyApp extends StatelessWidget {
         "ful": (BuildContext context) => StatefulGroupPage(
               brightness: brightness,
             ),
-        'change_theme' : (BuildContext context) => ChangeTheme(brightness: brightness,),
-        'change_fonts' : (BuildContext context) => ChangeFonts(brightness: brightness,),
+        'change_theme': (BuildContext context) => ChangeTheme(
+              brightness: brightness,
+            ),
+        'change_fonts': (BuildContext context) => ChangeFonts(
+              brightness: brightness,
+            ),
+        'photo': (BuildContext context) => PhotoApp(
+              brightness: brightness,
+            ),
       },
     );
   }
@@ -82,11 +90,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 'less'),
             _items('StatefulWidget基础组件',
                 StatefulGroupPage(brightness: brightness), 'ful'),
-            _items('自定义主题',
-                ChangeTheme(brightness: brightness,), 'change_theme'),
-             _items('自定义字体',
-                ChangeFonts(brightness: brightness,), 'change_fonts'),
-
+            _items(
+                '自定义主题',
+                ChangeTheme(
+                  brightness: brightness,
+                ),
+                'change_theme'),
+            _items(
+                '自定义字体',
+                ChangeFonts(
+                  brightness: brightness,
+                ),
+                'change_fonts'),
+            _items(
+                '拍照APP开发-图片获取与图片展示',
+                PhotoApp(
+                  brightness: brightness,
+                ),
+                'photo'),
           ],
         ),
       ),
