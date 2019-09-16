@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/change_fonts.dart';
-import 'package:flutter_learn/change_theme.dart';
-import 'package:flutter_learn/less_group_page.dart';
-import 'package:flutter_learn/photo_app_page.dart';
-import 'package:flutter_learn/stateful_group_page.dart';
+import 'package:flutter_learn/five/home_five.dart';
+import 'package:flutter_learn/six/home_six.dart';
 
 void main() => runApp(MyApp());
 
-var brightness = Brightness.dark;
+var brightness = Brightness.light;
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,19 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue, brightness: brightness),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
       routes: <String, WidgetBuilder>{
-        "less": (BuildContext context) => LessGroupPage(brightness: brightness),
-        "ful": (BuildContext context) => StatefulGroupPage(
-              brightness: brightness,
-            ),
-        'change_theme': (BuildContext context) => ChangeTheme(
-              brightness: brightness,
-            ),
-        'change_fonts': (BuildContext context) => ChangeFonts(
-              brightness: brightness,
-            ),
-        'photo': (BuildContext context) => PhotoApp(
-              brightness: brightness,
-            ),
+        "five": (BuildContext context) => HomePageFive(brightness: brightness),
+        "six": (BuildContext context) => HomePageSix(brightness: brightness),
       },
     );
   }
@@ -45,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _isRouteName = false;
-  bool _isLight = true;
 
   @override
   Widget build(BuildContext context) {
@@ -69,67 +54,67 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SwitchListTile(
-              value: _isRouteName,
-              onChanged: (value) {
-                setState(() {
-                  _isRouteName = value;
-                });
-              },
-              title: Text('${_isRouteName ? '' : "不"}使用路由名称进行跳转'),
+      body: _createListView(),
+    );
+  }
+
+  _createListView() {
+    return ListView(
+      children: <Widget>[
+        _createListViewHeader(),
+        _items(
+            '第5章 Flutter入门：基础知识十六讲【升级打怪不可缺】',
+            HomePageFive(
+              brightness: brightness,
             ),
-            _items(
-                'StatelessWidget与基础组件',
-                LessGroupPage(
-                  brightness: brightness,
-                ),
-                'less'),
-            _items('StatefulWidget基础组件',
-                StatefulGroupPage(brightness: brightness), 'ful'),
-            _items(
-                '自定义主题',
-                ChangeTheme(
-                  brightness: brightness,
-                ),
-                'change_theme'),
-            _items(
-                '自定义字体',
-                ChangeFonts(
-                  brightness: brightness,
-                ),
-                'change_fonts'),
-            _items(
-                '拍照APP开发-图片获取与图片展示',
-                PhotoApp(
-                  brightness: brightness,
-                ),
-                'photo'),
-          ],
-        ),
+            'five'),
+        _items(
+            '第6章 Flutter入门：Flutter必备基础【修炼基本功】',
+            HomePageSix(
+              brightness: brightness,
+            ),
+            'six'),
+      ],
+    );
+  }
+
+  _createListViewHeader() {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: Colors.grey, width: 1))),
+      child: SwitchListTile(
+        value: _isRouteName,
+        onChanged: (value) {
+          setState(() {
+            _isRouteName = value;
+          });
+        },
+        title: Text('${_isRouteName ? '' : "不"}使用路由名称进行跳转'),
       ),
     );
   }
 
   _items(String title, page, String routeName) {
-    return RaisedButton(
-      onPressed: () => {
-        if (_isRouteName)
-          {
-            //使用路由名进行跳转
-            Navigator.pushNamed(context, routeName)
-          }
-        else
-          {
-            //不使用路由名进行跳转
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => page))
-          }
-      },
-      child: Text(title),
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: RaisedButton(
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        elevation: 5,
+        onPressed: () => {
+          if (_isRouteName)
+            {
+              //使用路由名进行跳转
+              Navigator.pushNamed(context, routeName)
+            }
+          else
+            {
+              //不使用路由名进行跳转
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => page))
+            }
+        },
+        child: Text(title),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/widget/gesture_detector_back.dart';
 import 'package:image_picker/image_picker.dart';
 
 ///拍照APP开发-图片获取与图片展示
@@ -42,6 +43,7 @@ class _PhotoAppState extends State<PhotoApp> {
             onTap: () {
               Navigator.pop(context);
             },
+            child: GestureDetectorBackWidget.getBackWidget(context),
           ),
         ),
         floatingActionButton: FloatingActionButton(

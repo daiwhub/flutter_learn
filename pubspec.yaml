@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   image_picker: ^0.6.1+4
+  path_provider: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,15 @@ flutter:
   assets:
     - images/icon_light.png
     - images/icon_night.png
+    - images/douzhanshen/baigu.jpg
+    - images/douzhanshen/changan.jpg
+    - images/douzhanshen/linghou.jpg
+    - images/douzhanshen/longnv.jpg
+    - images/douzhanshen/luocha.jpeg
+    - images/douzhanshen/luocha2.jpg
+    - images/douzhanshen/yuhu1.jpg
+    - images/douzhanshen/yuhu2.jpg
+    - images/image_load_failed.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
