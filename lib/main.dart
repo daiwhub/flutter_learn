@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/five/home_five.dart';
+import 'package:flutter_learn/seven/home_seven.dart';
 import 'package:flutter_learn/six/home_six.dart';
 
 void main() => runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "five": (BuildContext context) => HomePageFive(brightness: brightness),
         "six": (BuildContext context) => HomePageSix(brightness: brightness),
+        "seven": (BuildContext context) => HomePageSeven(brightness: brightness),
       },
     );
   }
@@ -74,6 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
               brightness: brightness,
             ),
             'six'),
+        _items(
+            '第7章 Flutter入门实战：APP导航框架与常用功能实现【先打一仗，巩固技能】',
+            HomePageSeven(
+              brightness: brightness,
+            ),
+            'seven'),
       ],
     );
   }
