@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "five": (BuildContext context) => HomePageFive(brightness: brightness),
         "six": (BuildContext context) => HomePageSix(brightness: brightness),
-        "seven": (BuildContext context) => HomePageSeven(brightness: brightness),
+        "seven": (BuildContext context) =>
+            HomePageSeven(brightness: brightness),
       },
     );
   }
@@ -121,7 +122,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   context, MaterialPageRoute(builder: (context) => page))
             }
         },
-        child: Text(title),
+        child: Container(
+            alignment: Alignment.topLeft,
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              title,
+              textAlign: TextAlign.start,
+              textDirection: TextDirection.ltr,
+              maxLines: 2,
+            )),
       ),
     );
   }
